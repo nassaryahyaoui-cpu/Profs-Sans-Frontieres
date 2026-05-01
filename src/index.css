@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,600;1,400&family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-title: "Cinzel Decorative", serif;
+  --font-head: "Cinzel", serif;
+  --font-tale: "Crimson Pro", serif;
+  --font-magic: "Crimson Pro", serif;
+  --font-fun: "Fredoka One", cursive;
+  --font-body: "Crimson Pro", serif;
+
+  --color-gold: #D4AF37;
+  --color-gold-light: #FAF3E0;
+  --color-gold-dark: #8B5E3C;
+  --color-crimson: #990000;
+  --color-forest: #5D4037;
+  --color-parchment: #F5E6CC;
+}
+
+@layer base {
+  body {
+    @apply font-body text-forest bg-[#FDFBF7];
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .dropcap {
+    @apply font-title text-6xl float-left leading-[0.8] pr-2 text-crimson;
+    text-shadow: 2px 2px 0 var(--color-gold);
+  }
+
+  .story-dialogue {
+    @apply block text-[#8B5E3C] italic border-l-4 border-gold pl-4 py-2 my-4 bg-gold-light/50 rounded-r-lg;
+  }
+}
+
+@layer components {
+  .magic-frame {
+    @apply border-[8px] md:border-[12px] border-[#8B5E3C] bg-[#F5E6CC] min-h-screen relative shadow-inner;
+  }
+
+  .paper-texture {
+    @apply absolute inset-0 opacity-10 pointer-events-none;
+    background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+  }
+
+  .magic-panel {
+    @apply bg-white border border-gold rounded-xl shadow-xl relative overflow-hidden transition-all duration-300;
+  }
+
+  .magic-panel::before {
+    content: '';
+    @apply absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-transparent via-gold to-transparent;
+  }
+
+  .magic-button {
+    @apply font-fun px-6 py-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 active:translate-y-1;
+    @apply bg-crimson text-gold-light shadow-md border-b-4 border-red-900;
+    @apply hover:shadow-lg hover:-translate-y-0.5 active:shadow-sm;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.watermark {
+  @apply fixed bottom-2 left-1/2 -translate-x-1/2 text-[10px] text-gold-dark/40 pointer-events-none z-[9999] whitespace-nowrap font-head uppercase tracking-widest font-bold;
+}

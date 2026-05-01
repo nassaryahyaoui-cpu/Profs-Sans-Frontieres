@@ -1,0 +1,9 @@
+{
+  "name": "Remix: Contes en Quête",
+  "description": "Application pédagogique bilingue de contes de fées pour enfants. Créé par M. Yahyaoui Nabil.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "offline-storage",
+    "text-to-speech"
+  ]
+}
